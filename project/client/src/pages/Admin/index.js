@@ -1,16 +1,6 @@
+import React, { Children,useEffect } from 'react'
 
-
-import React, { Children } from 'react'
-import {Tabs} from 'antd'
-import MovieList from './MovieList'
-import TheatresTable from './TheatresTable'
-import MovieFrom from './MovieForm'
-
-import React, { Children } from 'react'
-import React, { Children , useEffect } from 'react'
-
-import {Tabs} from 'antd'
-import {message , Tabs} from 'antd'
+import {message,Tabs} from 'antd'
 import MovieList from './MovieList'
 import TheatresTable from './TheatresTable'
 import MovieFrom from './MovieForm'
@@ -25,6 +15,10 @@ function Admin() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         });
+        console.log(""+user.data.data);
+        if(!user){
+            navigate("/admin");
+        }
 
         if (user.data.data.role === "partner" ) {
             navigate("/partner");
@@ -37,13 +31,11 @@ function Admin() {
         }
         else
         {
-
+            navigate("/admin");
         }
     }
 
-    useEffect(() => {
-        checkUser()
-    }, []);
+    checkUser();
 
     const tabItems = [
         { 
