@@ -29,7 +29,4 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
-
-// sdajhkfew
-// jbkweqj
 module.exports = User;
